@@ -1,0 +1,25 @@
+name: simpson_sound
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^6.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sounds/homer.mp3
+    - assets/sounds/flanders.mp3
+    - assets/sounds/maggie.mp3
+    - assets/sounds/bart.mp3
