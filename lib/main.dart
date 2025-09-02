@@ -57,6 +57,8 @@ class SimpsonsScreen extends StatelessWidget {
               _buildSoundButton("Maggie", "maggie.mp3"),
               const SizedBox(height: 20),
               _buildSoundButton("Bart", "bart.mp3"),
+              const SizedBox(height: 20),
+              _buildSoundButton("Nelson", "nelson.mp3"),
             ],
           ),
         ),
