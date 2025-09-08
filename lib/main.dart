@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -20,19 +21,24 @@ class SimpsonsApp extends StatelessWidget {
 class SimpsonsScreen extends StatelessWidget {
   const SimpsonsScreen({super.key});
 
-  // Audio player instance
   static final AudioPlayer _player = AudioPlayer();
 
-  // Play sound helper
+  // Random generator
+  static final Random _random = Random();
+
   static Future<void> _playSound(String fileName) async {
-    await _player.stop(); // stop if already playing
-    await _player.play(AssetSource("sounds/$fileName"));
+    await _player.stop();
+
+    final playPH = _random.nextDouble() < 0.3;
+    final soundToPlay = playPH ? "PH.mp3" : fileName;
+
+    await _player.play(AssetSource("sounds/$soundToPlay"));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // fallback background
+      backgroundColor: Colors.black,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -40,10 +46,7 @@ class SimpsonsScreen extends StatelessWidget {
               "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/msnbc/Components/Photos/060228/060228_simpsons_hmed_4p.jpg",
             ),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black54, // Dark overlay
-              BlendMode.darken,
-            ),
+            colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
           ),
         ),
         child: Center(
